@@ -1,0 +1,22 @@
+package domain;
+
+import java.io.IOException;
+
+import dao.SalaryDAO;
+
+public class Test {
+   public static void main(String[] args) throws IOException{
+      SalaryVO salaryVO = new SalaryVO();
+      SalaryDAO salaryDAO = new SalaryDAO();
+//      
+      salaryVO.setSalary(15100);
+      salaryVO.setIncomeTax(1000000);
+//      salaryVO.setNetPay(9_000_000);
+//      
+//      salaryDAO.insert(salaryVO);
+      
+      salaryDAO.update(salaryVO);
+      
+//      salaryDAO.setObject();
+   }
+}

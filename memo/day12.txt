@@ -1,0 +1,137 @@
+package hashMapTest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class JSONWork {
+   public static void main(String[] args) {
+      JSONObject productJSON = new JSONObject();
+      JSONArray products = new JSONArray();
+      
+//      상품 클래스 선언(상품 번호, 상품 이름, 상품 가격, 상품 재고)
+//      1. 상품 1개를 제작하여 JSON형식으로 변경
+      Product shoes = new Product(1, "나이키", 129_000, 32);
+      JSONObject shoesJSON = new JSONObject(shoes);
+//      System.out.println(shoesJSON);
+//      2. JSON형식의 상품 정보 중 상품 재고 출력
+//      try {
+//         System.out.println(shoesJSON.get("stock"));
+//      } catch (JSONException e) {
+//         e.printStackTrace();
+//      }
+      
+//      3. 할인 중인 상품 정보 제작
+      Product bag = new Product(2, "샤넬", 12_000_000, 2);
+      
+//      4. 할인 중인 상품의 KEY값은 "discount"로 설정
+//      5. JSON형식으로 변경
+      JSONObject bagJSON = new JSONObject(bag);
+//      6. JSON에 할인율 필드 추가
+      try {
+         bagJSON.put("discount", 30);
+      } catch (JSONException e) {
+         e.printStackTrace();
+      }
+//      7. JSON형식의 상품 정보 중 할인율 출력
+      try {
+         System.out.println(bagJSON.get("discount"));
+      } catch (JSONException e) {
+         e.printStackTrace();
+      }
+      
+//      신발과 가방을 하나로 묶어보자!
+      try {
+         products.put(bagJSON);
+         products.put(shoesJSON);
+//         System.out.println(products);
+         System.out.println(products.getJSONObject(0).get("price"));
+//         productJSON.put("shoes", shoesJSON);
+//         productJSON.put("bag", bagJSON);
+//         System.out.println(productJSON);
+      } catch (JSONException e) {
+         e.printStackTrace();
+      }
+   }
+}
+
+<참조형>
+마지막 마침표에 ::
+()필요없음
+
+메소드에 넣으면 -> 객체로
+메소드에 안넣으면 -> 클래스로
+
+
+<Date>
+getTime() : 두 날짜의 차이를 구할 때, 밀리초 리턴
+----------------------------------------------------------------------
+프로그램
+	실행되지 않은 상태.
+
+프로세스
+	실행된 프로그램.
+
+쓰레드
+	프로세스 처리 경로.
+
+	-단일 쓰레드
+		처리 경로를 한 개만 가지고 있기 때문에 직렬적이다.
+		동시에 많은 양을 처리하기 힘들기 때문에 상대적으로 비효율적이다.
+		하지만 하나의 작업에 문제가 발생하더라도 다른 작업에는 영향을 끼치지 않는다.
+		따라서 안정성이 보장되고 설계 시 멀티 쓰레드에 비해 쉽다.
+		예)매표소
+
+	-멀티 쓰레드
+		하나의 프로세스를 동시에 처리하는 것처럼 보이지만 사실은 매우 짧은 단위로 분할해서 차례로 처리한다.
+		여러 개의 처리 경로를 가질 수 있도록 하며, 동시 작업이 가능해진다.
+		설계하기 굉장히 어려우며, 하나의 스레드 문제 발생 시 모든 쓰레드에 문제가 발생하게 된다.
+		JAVA 웹 서버가 대표적인 멀티 쓰레드이다. 멀티 쓰레드로 설계했다면, 처리량 증가, 효율성 증가,
+		처리비용 감소의 장점이 있기 때문에 단점을 감수하고 설계하는 편이다.
+		예) 음식점
+
+
+멀티 쓰레드 구현 방법
+	핵심 : run() 메소드 재정의
+	
+	1. Thread 클래스 상속
+	2. Runnable 인터페이스 지정
+
+------------------------------------------------------------------------
+[실습]
+동석이네 동물원에는 3마리의 동물이 있다.
+각 동물은 울음 소리가 다르고 2마리의 동물은 동시에 운다.
+나머지 1마리 동물은 2마리 동물이 모두 울고 나서 마지막에 운다.
+
+package명은 threadTask으로 만들고 클래스는 2개만 선언한다.
+하나의 클래스에는 main 쓰레드가 있다.
+Runnable 인터페이스로 멀티 쓰레드를 구현하고 반드시 join()을 사용한다.
+※ 각 동물은 10번씩만 운다.
+
+
+- 주석을 작성하였는가
+- Thread의 name필드를 사용할 수 있는가
+- 배열을 사용하였는가
+- 클래스를 두 개 선언하였는가
+- 가산점 : 람다식을 사용하였는가, main 쓰레드를 사용하였는가
+
+
+[쓰레드 과제]
+// 제한시간 : 1시간
+	// 3개의 쓰레드가 있다.
+	// Thread1, Thread2, Thread3
+	// 사용자가 입력한 순서대로 각 알맞는 문자열이 출력된다.
+
+	// 입력 예) 3 1 2
+	// 출력 예) third first second
+
+	// 단, Thread들은 항상 1, 2, 3 순서로 실행되어야 한다.
+
+	// Thread1 : third
+	// Thread2 : first
+	// Thread3 : second
+
+	// 출력 시 쓰레드의 번호도 출력할 경우 가산점으로 처리한다.
+
+
+
