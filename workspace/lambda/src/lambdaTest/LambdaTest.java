@@ -2,8 +2,8 @@ package lambdaTest;
 
 public class LambdaTest {
 	public static void main(String[] args) {
-//		LambdaInter lambdaInter = (number) -> number % 10 == 0;
-//		boolean result = lambdaInter.checkMultipleOf10(5);
+//		LambdaInter lambdaInter = (number) ->  number % 10 == 0;
+//		boolean result = lambdaInter.checkMultipleOf10(10);
 //		System.out.println(result);
 		
 		LambdaInter lambdaInter = number -> {

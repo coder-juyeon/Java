@@ -1,14 +1,12 @@
 package lambdaTest;
 
-import java.util.Scanner;
-
 public class PrintNameTest {
-	public void printFullName(PrintName printName){
-		System.out.println(printName.getFullName("김", "주연"));
+	public void printFullName(PrintName printName) {
+		System.out.println(printName.getFullName("동석", "한"));
 	}
+	
 	public static void main(String[] args) {
 		PrintNameTest printNameTest = new PrintNameTest();
-		
-		printNameTest.printFullName((f, l) -> f+l);
+		printNameTest.printFullName((f, l) -> l + f);
 	}
 }

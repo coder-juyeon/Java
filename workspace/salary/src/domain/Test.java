@@ -13,7 +13,7 @@ public class Test {
       salaryVO.setIncomeTax(1000000);
 //      salaryVO.setNetPay(9_000_000);
 //      
-//      salaryDAO.insert(salaryVO);
+      salaryDAO.insert(salaryVO);
       
       salaryDAO.update(salaryVO);
       

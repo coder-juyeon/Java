@@ -5,7 +5,14 @@ public class User {
 	private String name;
 	private int age;
 	
-	public User () {;}
+	public User() {;}
+
+	public User(int number, String name, int age) {
+		super();
+		this.number = number;
+		this.name = name;
+		this.age = age;
+	}
 
 	public int getNumber() {
 		return number;
@@ -15,12 +22,12 @@ public class User {
 		this.number = number;
 	}
 
-	public String getname() {
+	public String getName() {
 		return name;
 	}
 
-	public void setname(String anme) {
-		this.name = anme;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public int getAge() {
@@ -35,13 +42,5 @@ public class User {
 	public String toString() {
 		return "User [number=" + number + ", name=" + name + ", age=" + age + "]";
 	}
-
-	public User(int number, String name, int age) {
-		super();
-		this.number = number;
-		this.name = name;
-		this.age = age;
-	}
-	
 	
 }
